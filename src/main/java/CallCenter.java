@@ -58,8 +58,12 @@ class CallCenter {
         public void run() {
             String str;
             while (cycle || !queue.isEmpty()) {
-                if ((str = queue.poll()) != null)
+                str = queue.poll();
+                if (str != null) {
                     System.out.println(Thread.currentThread().getName() + " обрабатывает " + str);
+                } else {
+                    System.out.println("Нет звонков в ожидании");
+                }
                 try {
                     Thread.sleep(TIME_WORK_SPESIALST);
                 } catch (InterruptedException e) {
